@@ -1,0 +1,18 @@
+{% extends 'blog.html' %}
+
+{% block content %}
+{% for post in posts %}
+  <div class="blog-post">
+      <h2 class="blog-post-title">{{post.title}}</h2>
+      <p class="blog-post-meta">{{post.pub_date}}</p>
+      <hr>
+      <p>{{post.body}}</p>
+  </div><!-- /.blog-post -->
+{% endfor %}
+
+<nav class="blog-pagination">
+    <a class="btn btn-outline-primary" href="#">Older</a>
+    <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
+</nav>
+
+{% endblock %}

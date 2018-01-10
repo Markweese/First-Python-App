@@ -2,17 +2,22 @@
 
 {% block content %}
 {% for post in posts %}
-  <div class="blog-post">
-      <h2 class="blog-post-title">{{post.title}}</h2>
-      <p class="blog-post-meta">{{post.pub_date}}</p>
-      <hr>
-      <p>{{post.body}}</p>
-  </div><!-- /.blog-post -->
+  {% if post.id <= 10 %}
+    <div class="blog-post">
+        <h2 class="blog-post-title">{{post.title}}</h2>
+        <p class="blog-post-meta">{{post.pub_date}}</p>
+        <hr>
+        <p>{{post.body}}</p>
+    </div><!-- /.blog-post -->
+  {% endif %}
 {% endfor %}
 
-<nav class="blog-pagination">
-    <a class="btn btn-outline-primary" href="#">Older</a>
-    <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="/1">1</a></li>
+    <li class="page-item"><a class="page-link" href="/2">2</a></li>
+    <li class="page-item"><a class="page-link" href="/3">3</a></li>
+  </ul>
 </nav>
 
 {% endblock %}

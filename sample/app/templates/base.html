@@ -8,7 +8,7 @@
 
     <link rel="icon" href="https://v4-alpha.getbootstrap.com/favicon.ico">
 
-    <title>Mark's Bootstrap</title>
+    <title>Ski Journal</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -22,31 +22,21 @@
     <div class="blog-masthead">
       <div class="container">
         <nav class="nav blog-nav">
+          <h2 class="navbar-brand brand-name">
+            <a href="/"><img class="img-responsive2"
+            src="https://lh3.googleusercontent.com/tUPVlNMqhjtvlbcYPjxLZWVYmkyUENQ52jLOunhH-_S3-56c7uDK5IsQOtb_xV5vPyK33NndU07Awe4aL0eu4l1O3BeYRbjD3241QTtbsj4RW3M0o5Y6hqZbGCOIvk_qSLn701HO2SSbF1zzFt9Q3ceiqJRo7lx23CdSVcoB-qUoSzSRk-jOue9aZbZxIVAXIPXf8589K4sdXkJvFtrvn2zQJ7Jmmn2RzdUYYLSEv6wPl91fhjv3QAJFnRObrMvfuH_RBN-mDiEjbm06G29O_RjEF0kEQgB2l_9V-ItlYj1ollkhairOdz_aUcgpYAXop1-DUp0Ew42d8bNceaYJPl9oDQULZrTvx0qFYOkBaRxUXS4FtPTH2qJIdyOXaDcV8xdkXzEg6PqptJdjvmGZydoMgBlv9mOUPf2BkZFoRb0TGfOb8DJv6IvoJBTKAzEOyJNhTPtU6KqKLBeA86MgWb1yOA5whYh1XU_8Q9qRyoq0ex_JcrVQ_280C2Uz4whmicc2Kr1pkIUwBy9yOOP8OZEWjQlNuPSkxk81Y0FGAfrK262YQqoXqqS2bj6TMamh=w1216-h638" width='200' alt='Brand Image'></a>
+          </h2>
           <a class="nav-link active" href="{{ url_for('index') }}">Home</a>
           <a class="nav-link" href="{{ url_for('create') }}">Create Blog</a>
           <a class="nav-link" href="{{ url_for('about') }}">About</a>
-          {% if current_user.is_authenticated %}
-          <div class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  {{ current_user.email }}
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="{{ url_for('account') }}">View</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="{{ url_for('logout') }}">Log Out</a>
-              </div>
-          </div>
-          {% else %}
-          <a class="nav-link btn btn-primary" href="{{ url_for('login') }}">Log In</a>
-          {% endif %}
         </nav>
       </div>
     </div>
 
     <div class="blog-header">
       <div class="container">
-        <h1 class="blog-title">Mark's Bootstrap Blog</h1>
-        <p class="lead blog-description">A sample blog for snowvation</p>
+        <h1 class="blog-title">SKI JOURNAL</h1>
+        <p class="lead blog-description"><a href="/create">Tell a story →</a></p>
       </div>
     </div>
 
@@ -70,7 +60,6 @@
     </div><!-- /.container -->
 
     <footer class="blog-footer">
-      <p>Blog template built for <a href="https://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
       <p>
         <a href="#">Back to top</a>
       </p>

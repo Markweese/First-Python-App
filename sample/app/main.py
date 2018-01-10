@@ -81,13 +81,25 @@ class Category(db.Model):
 def index():
     posts = Post.query.all()
     return render_template('index.html', posts=posts)
+
+@app.route("/<int:page>")
+def paginate(page):
+    maxNum = page*10
+    minNum = maxNum-10
+    #.filter() not supporting gt lt comparison between id max/min
+    #error: '>' not supported between instances of 'builtin_function_or_method' and 'int'
+    posts = Post.query.all()
+    return render_template('paginated.html', posts=posts, max=maxNum, min=minNum)
+
 #archive filter
 @app.route('/archive/<int:date>')
 def archive(date):
-#--name 'pub_date' is not defined-- keeps holding queries up
-#tried both db.session.query() and Post.query
-    postsArc = Post.query.all()
-    return render_template('archive.html', posts=postsArc, date=date)
+# --name 'pub_date' is not defined-- keeps holding queries up,
+# doesn't like the .month on end of it.
+# passing to jinja for check
+    posts = Post.query.all()
+    return render_template('archive.html', posts=posts, date=date)
+
 #about page
 @app.route("/about")
 def about():

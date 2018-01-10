@@ -39,6 +39,7 @@ DROP TABLE IF EXISTS `post`;
 CREATE TABLE `post` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(80) DEFAULT NULL,
+  `author` text,
   `body` text,
   `pub_date` datetime DEFAULT NULL,
   `category_id` int(11) DEFAULT NULL,

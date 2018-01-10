@@ -52,11 +52,13 @@ class User(db.Model, UserMixin):
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(80))
+    author = db.Column(db.String(100))
     body = db.Column(db.Text(15000))
     pub_date = db.Column(db.DateTime)
 
-    def __init__(self, title, body, pub_date=None):
+    def __init__(self, title, author, body, pub_date=None):
         self.title = title
+        self.author = author
         self.body = body
         if pub_date is None:
             pub_date = datetime.utcnow()
@@ -108,7 +110,8 @@ def about():
 #blog post form
 class BlogForm(FlaskForm):
     title = StringField('Title', [validators.Length(max=80)])
-    body = StringField('Body', [validators.Length(min=10)])
+    author = StringField('Author', [validators.Length(max=80)])
+    body = StringField('Story', [validators.Length(min=10)])
     submit = SubmitField('Post Blog')
 
 #blog post page
@@ -116,7 +119,7 @@ class BlogForm(FlaskForm):
 def create():
     form = BlogForm()
     if form.validate_on_submit():
-        post = Post(form.title.data, form.body.data)
+        post = Post(form.title.data, form.author.data, form.body.data)
         db.session.add(post)
         db.session.commit()
         return redirect('/')

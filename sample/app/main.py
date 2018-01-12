@@ -102,6 +102,14 @@ def archive(date):
     posts = Post.query.all()
     return render_template('archive.html', posts=posts, date=date)
 
+#archive and paginate
+@app.route('/archive/<int:date>/<int:page>')
+def arcpag(date, page):
+    maxNum = page*10
+    minNum = maxNum-10
+    posts = Post.query.all()
+    return render_template('arc_pag.html', posts=posts, date=date, max=maxNum, min=minNum)
+
 #about page
 @app.route("/about")
 def about():
